@@ -13,7 +13,7 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
 
     Future.delayed(Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, '/loginPage');
+      Navigator.pushReplacementNamed(context, '/registerPage');
     });
   }
 
