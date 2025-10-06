@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ziemart_frontend/view/pages/homepage.dart';
 import 'package:ziemart_frontend/view/pages/registerPage.dart';
 import 'package:ziemart_frontend/view/pages/splashPage.dart';
 import 'package:ziemart_frontend/view/pages/loginPage.dart';
@@ -19,6 +20,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/splash': (context) => const SplashPage(),
         '/registerPage': (context) => const RegisterPage(),
+        '/loginPage': (context) => const LoginPage(),
+        '/homePage': (context) => const HomePage(),
       },
     );
   }
