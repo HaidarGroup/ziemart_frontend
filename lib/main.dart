@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ziemart_frontend/view/pages/homepage.dart';
-import 'package:ziemart_frontend/view/pages/registerPage.dart';
-import 'package:ziemart_frontend/view/pages/splashPage.dart';
-import 'package:ziemart_frontend/view/pages/loginPage.dart';
+import 'package:ziemart_frontend/views/pages/homepage.dart';
+import 'package:ziemart_frontend/views/pages/registerPage.dart';
+import 'package:ziemart_frontend/views/pages/splashPage.dart';
+import 'package:ziemart_frontend/views/pages/loginPage.dart';
 
 void main() {
   runApp(const MyApp());
