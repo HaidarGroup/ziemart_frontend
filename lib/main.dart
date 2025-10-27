@@ -1,11 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:ziemart_frontend/views/pages/homepage.dart';
-import 'package:ziemart_frontend/views/pages/registerPage.dart';
-import 'package:ziemart_frontend/views/pages/splashPage.dart';
-import 'package:ziemart_frontend/views/pages/loginPage.dart';
+import 'package:provider/provider.dart';
+
+// Import ViewModels
+import 'viewmodels/login_viewmodel.dart';
+import 'viewmodels/register_viewmodel.dart';
+import 'viewmodels/product_viewmodel.dart'; // ✅ Tambahkan ini
+
+// Import Pages
+import 'views/pages/splashPage.dart';
+import 'views/pages/loginPage.dart';
+import 'views/pages/registerPage.dart';
+import 'views/pages/homePage.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => LoginViewModel()),
+        ChangeNotifierProvider(create: (_) => RegisterViewModel()),
+        ChangeNotifierProvider(create: (_) => ProductViewModel()), // ✅ Tambahkan ini
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -14,14 +31,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Ziemart',
       debugShowCheckedModeBanner: false,
-      title: 'Splash Example',
+      theme: ThemeData(
+        primarySwatch: Colors.orange,
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: const AppBarTheme(
+          elevation: 0,
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black,
+        ),
+      ),
       initialRoute: '/splash',
       routes: {
-        '/splash': (context) => const SplashPage(),
-        '/registerPage': (context) => const RegisterPage(),
-        '/loginPage': (context) => const LoginPage(),
-        '/homePage': (context) => const HomePage(),
+        '/splash': (_) => const SplashPage(),
+        '/loginPage': (_) => const LoginPage(),
+        '/registerPage': (_) => const RegisterPage(),
+        '/homePage': (_) => const HomePage(),
       },
     );
   }

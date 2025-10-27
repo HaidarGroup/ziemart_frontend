@@ -29,7 +29,10 @@ class RegisterPage extends StatelessWidget {
               ),
               child: Center(
                 child: SingleChildScrollView(
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 40),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 40,
+                  ),
                   child: Card(
                     elevation: 12,
                     shadowColor: Colors.blueAccent.withOpacity(0.3),
@@ -61,8 +64,9 @@ class RegisterPage extends StatelessWidget {
                               controller: vm.usernameController,
                               label: "Username",
                               icon: Icons.person,
-                              validator: (v) =>
-                                  v == null || v.isEmpty ? "Username wajib diisi" : null,
+                              validator: (v) => v == null || v.isEmpty
+                                  ? "Username wajib diisi"
+                                  : null,
                             ),
                             const Gap(14),
 
@@ -79,8 +83,9 @@ class RegisterPage extends StatelessWidget {
                                       if (value == null || value.isEmpty) {
                                         return "Email wajib diisi";
                                       }
-                                      final emailRegex =
-                                          RegExp(r'^[^@]+@[^@]+\.[^@]+');
+                                      final emailRegex = RegExp(
+                                        r'^[^@]+@[^@]+\.[^@]+',
+                                      );
                                       if (!emailRegex.hasMatch(value)) {
                                         return "Format email tidak valid";
                                       }
@@ -95,8 +100,9 @@ class RegisterPage extends StatelessWidget {
                                     label: "Nomor HP",
                                     icon: Icons.phone_android,
                                     keyboardType: TextInputType.phone,
-                                    validator: (v) =>
-                                        v == null || v.isEmpty ? "Nomor wajib diisi" : null,
+                                    validator: (v) => v == null || v.isEmpty
+                                        ? "Nomor wajib diisi"
+                                        : null,
                                   ),
                                 ),
                               ],
@@ -110,7 +116,8 @@ class RegisterPage extends StatelessWidget {
                               icon: Icons.lock_outline,
                               obscureText: true,
                               validator: (v) {
-                                if (v == null || v.isEmpty) return "Password wajib diisi";
+                                if (v == null || v.isEmpty)
+                                  return "Password wajib diisi";
                                 if (v.length < 6) return "Minimal 6 karakter";
                                 return null;
                               },
@@ -157,8 +164,8 @@ class RegisterPage extends StatelessWidget {
                                   : Icons.storefront_outlined,
                               validator: (v) => v == null || v.isEmpty
                                   ? (vm.role == "buyer"
-                                      ? "Nama lengkap wajib diisi"
-                                      : "Nama toko wajib diisi")
+                                        ? "Nama lengkap wajib diisi"
+                                        : "Nama toko wajib diisi")
                                   : null,
                             ),
                             const Gap(28),
@@ -174,9 +181,13 @@ class RegisterPage extends StatelessWidget {
                                         if (formKey.currentState!.validate()) {
                                           final success = await vm.register();
                                           if (success) {
-                                            ScaffoldMessenger.of(context).showSnackBar(
+                                            ScaffoldMessenger.of(
+                                              context,
+                                            ).showSnackBar(
                                               const SnackBar(
-                                                content: Text("Registrasi berhasil!"),
+                                                content: Text(
+                                                  "Registrasi berhasil!",
+                                                ),
                                                 backgroundColor: Colors.green,
                                               ),
                                             );
@@ -184,24 +195,34 @@ class RegisterPage extends StatelessWidget {
                                               Navigator.pushReplacement(
                                                 context,
                                                 MaterialPageRoute(
-                                                  builder: (context) => const LoginPage(),
+                                                  builder: (context) =>
+                                                      const LoginPage(),
                                                 ),
                                               );
                                             } else {
                                               Navigator.pushReplacement(
                                                 context,
                                                 MaterialPageRoute(
-                                                  builder: (context) => EmailVerifiedPage(
-                                                    email: vm.emailController.text.trim(),
-                                                  ),
+                                                  builder: (context) =>
+                                                      EmailVerifiedPage(
+                                                        email: vm
+                                                            .emailController
+                                                            .text
+                                                            .trim(),
+                                                      ),
                                                 ),
                                               );
                                             }
                                           } else {
-                                            ScaffoldMessenger.of(context).showSnackBar(
+                                            ScaffoldMessenger.of(
+                                              context,
+                                            ).showSnackBar(
                                               const SnackBar(
-                                                content: Text("Registrasi gagal."),
-                                                backgroundColor: Colors.redAccent,
+                                                content: Text(
+                                                  "Registrasi gagal.",
+                                                ),
+                                                backgroundColor:
+                                                    Colors.redAccent,
                                               ),
                                             );
                                           }
@@ -216,13 +237,16 @@ class RegisterPage extends StatelessWidget {
                                 ),
                                 child: vm.isLoading
                                     ? const CircularProgressIndicator(
-                                        color: Colors.white, strokeWidth: 3)
+                                        color: Colors.white,
+                                        strokeWidth: 3,
+                                      )
                                     : const Text(
                                         "DAFTAR",
                                         style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w600),
+                                          color: Colors.white,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w600,
+                                        ),
                                       ),
                               ),
                             ),
@@ -282,8 +306,10 @@ class RegisterPage extends StatelessWidget {
         labelText: label,
         filled: true,
         fillColor: Colors.white,
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 18,
+          vertical: 14,
+        ),
         labelStyle: const TextStyle(color: Colors.black87),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
@@ -291,8 +317,7 @@ class RegisterPage extends StatelessWidget {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide:
-              BorderSide(color: Colors.blueAccent.shade200, width: 1.8),
+          borderSide: BorderSide(color: Colors.blueAccent.shade200, width: 1.8),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),

@@ -20,7 +20,7 @@ class User {
       username: json['username'] ?? '',
       email: json['email'] ?? '',
       role: json['role'] ?? '',
-      phoneNumber: json['phone_number'] ?? '',
+      phoneNumber: json['phoneNumber'] ?? '',
       fullName: json['fullName'],
       storeName: json['storeName'],
     );
