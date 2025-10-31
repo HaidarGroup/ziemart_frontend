@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'viewmodels/login_viewmodel.dart';
 import 'viewmodels/register_viewmodel.dart';
 import 'viewmodels/product_viewmodel.dart'; // ✅ Tambahkan ini
+import 'viewmodels/comment_viewmodel.dart'; // ✅ Tambahkan ini
 
 // Import Pages
 import 'views/pages/splashPage.dart';
@@ -18,7 +19,8 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => LoginViewModel()),
         ChangeNotifierProvider(create: (_) => RegisterViewModel()),
-        ChangeNotifierProvider(create: (_) => ProductViewModel()), // ✅ Tambahkan ini
+        ChangeNotifierProvider(create: (_) => ProductViewModel()), 
+         ChangeNotifierProvider(create: (_) => CommentViewModel()),
       ],
       child: const MyApp(),
     ),
